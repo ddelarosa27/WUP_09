@@ -111,4 +111,3 @@ subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2
 ```
 It looks like the best two variables to use are Length 2 and Height. 
 
-
