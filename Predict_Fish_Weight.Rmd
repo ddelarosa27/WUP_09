@@ -124,7 +124,3 @@ Based on the summary the best two variables to use are Length 2 and Width.
 
 
 
-
-
-
-
