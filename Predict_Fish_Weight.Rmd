@@ -79,6 +79,10 @@ subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2
 
 In the Bream model it seems that the best plots to use to find the weight are height and width.
 
-
-
-
+```{r}
+which.max(summary.out$adjr2)
+```
+```{r}
+summary.out$which[2,]
+```
+Based on the summary the best variables to use are Length2 and Height. 
