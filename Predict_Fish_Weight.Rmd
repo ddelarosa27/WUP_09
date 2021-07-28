@@ -54,3 +54,31 @@ summary.out$which[2,]
 
 Based on the summary the best two variables to use are height and width.
 
+# Bream
+
+
+```{r}
+Bream <- filter(allthat, Species=="Bream")
+Bream <- select(Bream,-1)
+```
+
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Bream,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+
+In the Bream model it seems that the best plots to use to find the weight are height and width.
+
+
+
+
