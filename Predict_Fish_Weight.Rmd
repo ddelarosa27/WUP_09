@@ -86,3 +86,31 @@ which.max(summary.out$adjr2)
 summary.out$which[2,]
 ```
 Based on the summary the best variables to use are Length2 and Height. 
+
+
+# Smelt
+
+```{r}
+Smelt <- filter(allthat, Species=="Smelt")
+Smelt <- select(Smelt,-1)
+```
+
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Smelt,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+It looks like the best two variables to use are Length 2 and Height. 
+
+
+
+
